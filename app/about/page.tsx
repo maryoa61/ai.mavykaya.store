@@ -1,0 +1,1 @@
+export default function About(){ return <div className="max-w-3xl mx-auto px-4 mt-8 glass p-8 rounded-3xl"><h1 className="text-2xl font-black">درباره Mavy AI</h1><p className="opacity-70 mt-4 leading-loose">Mavy AI رسانه تخصصی هوش مصنوعی وابسته به mavykaya.store است.</p></div>}
