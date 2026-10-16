@@ -1,0 +1,1 @@
+export default function sitemap(){ return [{ url: \'https://ai.mavykaya.store\', lastModified: new Date() },{ url: \'https://ai.mavykaya.store/news\', lastModified: new Date() },{ url: \'https://ai.mavykaya.store/free-tokens\', lastModified: new Date() }] }
