@@ -1,1 +1,13 @@
-export default function sitemap(){ return [{ url: \'https://ai.mavykaya.store\', lastModified: new Date() },{ url: \'https://ai.mavykaya.store/news\', lastModified: new Date() },{ url: \'https://ai.mavykaya.store/free-tokens\', lastModified: new Date() }] }
+import { news } from "../lib/data";
+
+export const dynamic = "force-static";
+
+export default function sitemap() {
+  const base = "https://ai.mavykaya.store";
+  const pages = ["", "/news", "/free-tokens", "/tutorials", "/shop", "/about", "/contact", "/privacy"];
+  const now = new Date();
+  return [
+    ...pages.map((p) => ({ url: `${base}${p}${p ? "/" : ""}`, lastModified: now })),
+    ...news.map((n) => ({ url: `${base}/news/${n.slug}/`, lastModified: now })),
+  ];
+}

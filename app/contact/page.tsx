@@ -1,1 +1,10 @@
-export default function Contact(){ return <div className="max-w-3xl mx-auto px-4 mt-8 glass p-8 rounded-3xl"><h1 className="text-2xl font-black">تماس با ما</h1><p className="opacity-70 mt-4">ایمیل: support@mavykaya.store</p></div>}
+export const metadata = { title: "تماس با ما | Mavy AI" };
+
+export default function Contact() {
+  return (
+    <div className="max-w-3xl mx-auto px-4 mt-8 glass p-8 rounded-3xl">
+      <h1 className="text-2xl font-black">تماس با ما</h1>
+      <p className="opacity-70 mt-4">ایمیل: support@mavykaya.store</p>
+    </div>
+  );
+}
