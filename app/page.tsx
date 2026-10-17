@@ -6,6 +6,15 @@ import { modelEn, newsEn } from "../lib/content";
 import { useLang } from "../components/LanguageProvider";
 import type { Key } from "../lib/i18n";
 
+/* ------------------------- safe English lookups ------------------------- */
+/* Works whether lib/content.ts is an array (by index) or an object (by slug). */
+
+type ModelEn = { token?: string; desc?: string };
+type NewsEn = { title?: string; date?: string };
+
+const modelEnMap = modelEn as unknown as Record<string | number, ModelEn | undefined>;
+const newsEnMap = newsEn as unknown as Record<string | number, NewsEn | undefined>;
+
 /* ---------------------------------- icons --------------------------------- */
 
 function ArrowIcon({ className = "" }: { className?: string }) {
@@ -186,13 +195,17 @@ const shopProducts: { nameKey: Key; features: Key[]; icon: ReactNode }[] = [
 export default function HomePage() {
   const { t, pick } = useLang();
 
-  // freeModels[i] و modelEn[i] هم‌اندازه و هم‌ترتیب هستند؛ همین برای news و newsEn هم صادق است.
-  const mToken = (i: number) => pick(freeModels[i].token, modelEn[i].token);
+  const enModel = (i: number): ModelEn | undefined =>
+    modelEnMap[freeModels[i].slug] ?? modelEnMap[i];
+  const enNews = (i: number): NewsEn | undefined =>
+    newsEnMap[news[i].slug] ?? newsEnMap[i];
+
+  const mToken = (i: number) => pick(freeModels[i].token, enModel(i)?.token ?? freeModels[i].token);
   const mName = (i: number) => freeModels[i].name;
-  const mDesc = (i: number) => pick(freeModels[i].desc, modelEn[i].desc);
+  const mDesc = (i: number) => pick(freeModels[i].desc, enModel(i)?.desc ?? freeModels[i].desc);
   const nCat = (i: number) => news[i].cat;
-  const nDate = (i: number) => pick(news[i].date, newsEn[i].date);
-  const nTitle = (i: number) => pick(news[i].title, newsEn[i].title);
+  const nDate = (i: number) => pick(news[i].date, enNews(i)?.date ?? news[i].date);
+  const nTitle = (i: number) => pick(news[i].title, enNews(i)?.title ?? news[i].title);
 
   return (
     <main className="bg-[#080C1E] text-white">
