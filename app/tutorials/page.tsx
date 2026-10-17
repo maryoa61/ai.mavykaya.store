@@ -1,20 +1,35 @@
-import { tutorials } from "../../lib/data";
+import { tutorials } from "../../lib/tutorials";
 
-export const metadata = { title: "آموزش‌های کاربردی | Mavy AI", description: "آموزش استفاده از ابزارهای هوش مصنوعی" };
+export const metadata = {
+  title: "آموزش‌ها | Mavy AI",
+  description: "آموزش گام‌به‌گام استفاده از مدل‌های هوش مصنوعی با پلن رایگان",
+};
 
-export default function Tutorials() {
+export default function TutorialsPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 mt-8">
-      <h1 className="text-3xl font-black">آموزش‌های کاربردی</h1>
-      <div className="grid md:grid-cols-2 gap-6 mt-6">
+    <main className="mx-auto max-w-5xl px-4 py-12">
+      <h1 className="text-3xl font-black md:text-5xl">آموزش‌ها</h1>
+      <p className="mt-3 max-w-xl opacity-70">
+        گام‌به‌گام یاد بگیر چطور از مدل‌های هوش مصنوعی استفاده کنی.
+      </p>
+
+      <div className="mt-10 grid gap-5 md:grid-cols-2">
         {tutorials.map((t) => (
-          <div key={t.slug} className="glass p-6 rounded-3xl">
-            <h3 className="font-bold">{t.title}</h3>
-            <span className="text-xs opacity-50">{t.time} مطالعه</span>
-            <span className="block text-xs opacity-60 mt-3">به‌زودی</span>
-          </div>
+          <a
+            key={t.slug}
+            href={`/tutorials/${t.slug}/`}
+            className="group rounded-3xl border border-white/10 bg-[#121636] p-7 transition hover:border-[#00E5CC]/50"
+          >
+            <div className="flex items-center gap-3 text-xs">
+              <span className="rounded-full bg-[#00E5CC]/15 px-3 py-1 font-bold text-[#00E5CC]">{t.level}</span>
+              <span className="opacity-60">{t.time}</span>
+            </div>
+            <h2 className="mt-4 text-xl font-black transition group-hover:text-[#00E5CC]">{t.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed opacity-70">{t.intro}</p>
+            <span className="mt-5 inline-block text-sm font-bold text-[#00E5CC]">شروع آموزش ←</span>
+          </a>
         ))}
       </div>
-    </div>
+    </main>
   );
 }
