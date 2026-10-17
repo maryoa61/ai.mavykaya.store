@@ -186,11 +186,11 @@ const shopProducts: { nameKey: Key; features: Key[]; icon: ReactNode }[] = [
 export default function HomePage() {
   const { t, pick } = useLang();
 
-  // ترجمه‌ها با اندیس موازی هستند: freeModels[i] ↔ modelEn[i], news[i] ↔ newsEn[i]
-  const mToken = (i: number) => pick(freeModels[i].modelToken, modelEn[i].modelToken);
-  const mName = (i: number) => pick(freeModels[i].modelName, modelEn[i].modelName);
-  const mDesc = (i: number) => pick(freeModels[i].modelDesc, modelEn[i].modelDesc);
-  const nCat = (i: number) => pick(news[i].cat, newsEn[i].cat);
+  // freeModels[i] و modelEn[i] هم‌اندازه و هم‌ترتیب هستند؛ همین برای news و newsEn هم صادق است.
+  const mToken = (i: number) => pick(freeModels[i].token, modelEn[i].token);
+  const mName = (i: number) => freeModels[i].name;
+  const mDesc = (i: number) => pick(freeModels[i].desc, modelEn[i].desc);
+  const nCat = (i: number) => news[i].cat;
   const nDate = (i: number) => pick(news[i].date, newsEn[i].date);
   const nTitle = (i: number) => pick(news[i].title, newsEn[i].title);
 
@@ -290,7 +290,7 @@ export default function HomePage() {
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {freeModels.map((m, i) => (
             <article
-              key={m.modelName}
+              key={m.slug}
               className="tilt flex flex-col rounded-2xl border border-white/10 bg-[#121636] p-6 hover:border-white/25 hover:shadow-[0_24px_48px_-24px_rgba(0,0,0,0.7)]"
             >
               <span className="inline-flex w-fit rounded-full bg-[#00E5CC]/10 px-3 py-1 text-xs font-bold text-[#00E5CC]">
