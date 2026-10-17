@@ -1,0 +1,46 @@
+name: Build check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Show project files
+        run: |
+          echo "== Root files =="
+          ls -la
+          echo "== app folder =="
+          find app -type f | sort
+          echo "== lib folder =="
+          ls -la lib || echo "lib folder not found"
+          echo "== components folder =="
+          ls -la components || echo "components folder not found"
+
+      - name: Install dependencies
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            echo "No package-lock.json found, using npm install"
+            npm install
+          fi
+
+      - name: TypeScript check
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
