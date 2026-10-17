@@ -4,20 +4,14 @@ import type { ReactNode } from "react";
 import { freeModels, news } from "../lib/data";
 import { modelEn, newsEn } from "../lib/content";
 import { useLang } from "../components/LanguageProvider";
+import type { Key } from "../lib/i18n";
 
 /* ---------------------------------- icons --------------------------------- */
-/* Inline SVG only — no external assets, no icon libraries. */
 
 function ArrowIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
-      <path
-        d="M3.5 10h12m0 0-4.5-4.5M15.5 10 11 14.5"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M3.5 10h12m0 0-4.5-4.5M15.5 10 11 14.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -25,13 +19,7 @@ function ArrowIcon({ className = "" }: { className?: string }) {
 function ExternalIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
-      <path
-        d="M6.5 13.5 13.5 6.5M8 6.5h5.5V12"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M6.5 13.5 13.5 6.5M8 6.5h5.5V12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -39,13 +27,7 @@ function ExternalIcon({ className = "" }: { className?: string }) {
 function CheckIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
-      <path
-        d="m4.5 10.5 3.6 3.6 7.4-8.2"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="m4.5 10.5 3.6 3.6 7.4-8.2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -53,13 +35,7 @@ function CheckIcon({ className = "" }: { className?: string }) {
 function TrendIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
-      <path
-        d="M2.5 14.5 8 9l3.5 3.5 6-6.5M13 6h4.5v4.5"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M2.5 14.5 8 9l3.5 3.5 6-6.5M13 6h4.5v4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -77,12 +53,7 @@ function InfoIcon({ className = "" }: { className?: string }) {
 function BellIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
-      <path
-        d="M10 3.2a4.6 4.6 0 0 0-4.6 4.6v2.7L4 13.3h12l-1.4-2.8V7.8A4.6 4.6 0 0 0 10 3.2Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
+      <path d="M10 3.2a4.6 4.6 0 0 0-4.6 4.6v2.7L4 13.3h12l-1.4-2.8V7.8A4.6 4.6 0 0 0 10 3.2Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
       <path d="M8.4 15.8a1.7 1.7 0 0 0 3.2 0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   );
@@ -99,12 +70,7 @@ function ChatIcon({ className = "" }: { className?: string }) {
 function SparkIcon({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
-      <path
-        d="M10 3l1.9 5.1L17 10l-5.1 1.9L10 17l-1.9-5.1L3 10l5.1-1.9L10 3Z"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinejoin="round"
-      />
+      <path d="M10 3l1.9 5.1L17 10l-5.1 1.9L10 17l-1.9-5.1L3 10l5.1-1.9L10 3Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -127,7 +93,6 @@ function SearchIcon({ className = "" }: { className?: string }) {
 }
 
 /* ------------------------------ page-scoped CSS ----------------------------- */
-/* Keyframes, the 3D stack, hover-gated tilt, reduced motion, focus states. */
 
 const pageCss = `
   ::selection { background: rgba(0, 229, 204, 0.28); }
@@ -138,7 +103,6 @@ const pageCss = `
     outline-offset: 3px;
   }
 
-  /* --- 3D card stack (hero) --- */
   .stack-scene { perspective: 1100px; }
 
   .stack-card {
@@ -158,7 +122,6 @@ const pageCss = `
   .stack-front {
     transform: translate(-50%, -50%) translateY(26px) translateZ(14px) rotateY(2deg);
   }
-  /* mirror the fan in RTL */
   [dir="rtl"] .stack-back {
     transform: translate(-50%, -50%) translate(24px, -58px) translateZ(-95px) rotateY(15deg);
   }
@@ -188,7 +151,6 @@ const pageCss = `
     animation: mavy-spin 36s linear infinite;
   }
 
-  /* --- tilt on hover, only where hover really exists --- */
   .tilt {
     transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
       border-color 0.35s ease, box-shadow 0.35s ease;
@@ -211,35 +173,26 @@ const pageCss = `
 `;
 
 /* ------------------------------ shop preview data ------------------------------ */
-/* Keys only — all text resolves through t() at render time. */
 
-const shopProducts: { nameKey: string; features: string[]; icon: ReactNode }[] = [
-  {
-    nameKey: "home.shopP1",
-    features: ["home.shopP1a", "home.shopP1b", "home.shopP1c"],
-    icon: <ChatIcon className="h-5 w-5" />,
-  },
-  {
-    nameKey: "home.shopP2",
-    features: ["home.shopP2a", "home.shopP2b", "home.shopP2c"],
-    icon: <SparkIcon className="h-5 w-5" />,
-  },
-  {
-    nameKey: "home.shopP3",
-    features: ["home.shopP3a", "home.shopP3b", "home.shopP3c"],
-    icon: <GemIcon className="h-5 w-5" />,
-  },
-  {
-    nameKey: "home.shopP4",
-    features: ["home.shopP4a", "home.shopP4b", "home.shopP4c"],
-    icon: <SearchIcon className="h-5 w-5" />,
-  },
+const shopProducts: { nameKey: Key; features: Key[]; icon: ReactNode }[] = [
+  { nameKey: "home.shopP1", features: ["home.shopP1a", "home.shopP1b", "home.shopP1c"], icon: <ChatIcon className="h-5 w-5" /> },
+  { nameKey: "home.shopP2", features: ["home.shopP2a", "home.shopP2b", "home.shopP2c"], icon: <SparkIcon className="h-5 w-5" /> },
+  { nameKey: "home.shopP3", features: ["home.shopP3a", "home.shopP3b", "home.shopP3c"], icon: <GemIcon className="h-5 w-5" /> },
+  { nameKey: "home.shopP4", features: ["home.shopP4a", "home.shopP4b", "home.shopP4c"], icon: <SearchIcon className="h-5 w-5" /> },
 ];
 
 /* ---------------------------------- page ---------------------------------- */
 
 export default function HomePage() {
   const { t, pick } = useLang();
+
+  // ترجمه‌ها با اندیس موازی هستند: freeModels[i] ↔ modelEn[i], news[i] ↔ newsEn[i]
+  const mToken = (i: number) => pick(freeModels[i].modelToken, modelEn[i].modelToken);
+  const mName = (i: number) => pick(freeModels[i].modelName, modelEn[i].modelName);
+  const mDesc = (i: number) => pick(freeModels[i].modelDesc, modelEn[i].modelDesc);
+  const nCat = (i: number) => pick(news[i].cat, newsEn[i].cat);
+  const nDate = (i: number) => pick(news[i].date, newsEn[i].date);
+  const nTitle = (i: number) => pick(news[i].title, newsEn[i].title);
 
   return (
     <main className="bg-[#080C1E] text-white">
@@ -253,7 +206,6 @@ export default function HomePage() {
         </div>
 
         <div className="relative mx-auto grid w-full max-w-6xl items-center gap-12 px-4 pb-16 pt-12 sm:px-6 sm:pb-20 sm:pt-16 lg:grid-cols-2 lg:gap-10 lg:pb-24 lg:pt-24 xl:px-8">
-          {/* copy */}
           <div className="max-w-xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold tracking-wide text-white/75 sm:text-sm">
               <TrendIcon className="h-4 w-4 text-[#00E5CC]" />
@@ -268,9 +220,7 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <p className="mt-5 text-base leading-8 text-white/65 sm:text-lg sm:leading-9">
-              {t("home.lead")}
-            </p>
+            <p className="mt-5 text-base leading-8 text-white/65 sm:text-lg sm:leading-9">{t("home.lead")}</p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
@@ -289,54 +239,37 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* 3D card stack — decorative illustration (the same info lives in section 2) */}
-          <div
-            aria-hidden="true"
-            className="relative mx-auto h-[310px] w-full max-w-[460px] sm:h-[440px] sm:max-w-[520px]"
-          >
+          {/* 3D card stack — decorative */}
+          <div aria-hidden="true" className="relative mx-auto h-[310px] w-full max-w-[460px] sm:h-[440px] sm:max-w-[520px]">
             <div className="stack-scene absolute left-1/2 top-1/2 h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 scale-[0.7] sm:scale-100">
-              {/* soft violet glow in the center */}
               <div className="absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#635BFF]/30 blur-[70px]" />
-
-              {/* dashed rotating ring, pushed behind the cards */}
               <div className="stack-ring h-[400px] w-[400px] rounded-full border-2 border-dashed border-white/15" />
 
-              {/* back card — Claude */}
               <div className="stack-card stack-back">
                 <div className="stack-float stack-float-d2 rounded-2xl border border-white/10 bg-[#121636]/95 p-5 shadow-xl shadow-black/30">
                   <span className="inline-flex rounded-full bg-[#00E5CC]/10 px-3 py-1 text-[11px] font-bold text-[#00E5CC]">
-                    {freeModels[2].modelToken}
+                    {mToken(2)}
                   </span>
-                  <p className="mt-3 text-lg font-extrabold text-white">
-                    {pick(freeModels[2].modelName, modelEn[2].modelName)}
-                  </p>
+                  <p className="mt-3 text-lg font-extrabold text-white">{mName(2)}</p>
                 </div>
               </div>
 
-              {/* middle card — Gemini */}
               <div className="stack-card stack-mid">
                 <div className="stack-float stack-float-d1 rounded-2xl border border-white/10 bg-[#121636]/95 p-5 shadow-xl shadow-black/30">
                   <span className="inline-flex rounded-full bg-[#00E5CC]/10 px-3 py-1 text-[11px] font-bold text-[#00E5CC]">
-                    {freeModels[1].modelToken}
+                    {mToken(1)}
                   </span>
-                  <p className="mt-3 text-lg font-extrabold text-white">
-                    {pick(freeModels[1].modelName, modelEn[1].modelName)}
-                  </p>
+                  <p className="mt-3 text-lg font-extrabold text-white">{mName(1)}</p>
                 </div>
               </div>
 
-              {/* front card — DeepSeek V3 */}
               <div className="stack-card stack-front">
                 <div className="stack-float rounded-2xl border border-white/15 bg-[#121636] p-6 shadow-[0_35px_70px_-25px_rgba(0,0,0,0.65)]">
                   <span className="inline-flex rounded-full bg-[#00E5CC]/10 px-3 py-1 text-[11px] font-bold text-[#00E5CC]">
-                    {freeModels[0].modelToken}
+                    {mToken(0)}
                   </span>
-                  <p className="mt-3 text-2xl font-black text-white">
-                    {pick(freeModels[0].modelName, modelEn[0].modelName)}
-                  </p>
-                  <p className="mt-2 line-clamp-3 text-sm leading-7 text-white/60">
-                    {pick(freeModels[0].modelDesc, modelEn[0].modelDesc)}
-                  </p>
+                  <p className="mt-3 text-2xl font-black text-white">{mName(0)}</p>
+                  <p className="mt-2 line-clamp-3 text-sm leading-7 text-white/60">{mDesc(0)}</p>
                 </div>
               </div>
             </div>
@@ -348,10 +281,7 @@ export default function HomePage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 xl:px-8">
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
           <h2 className="text-2xl font-black md:text-3xl">{t("home.freeTitle")}</h2>
-          <a
-            href="/free-tokens/"
-            className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm font-bold text-[#00E5CC]"
-          >
+          <a href="/free-tokens/" className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm font-bold text-[#00E5CC]">
             {t("home.viewAll")}
             <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
           </a>
@@ -360,18 +290,14 @@ export default function HomePage() {
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {freeModels.map((m, i) => (
             <article
-              key={m.url}
+              key={m.modelName}
               className="tilt flex flex-col rounded-2xl border border-white/10 bg-[#121636] p-6 hover:border-white/25 hover:shadow-[0_24px_48px_-24px_rgba(0,0,0,0.7)]"
             >
               <span className="inline-flex w-fit rounded-full bg-[#00E5CC]/10 px-3 py-1 text-xs font-bold text-[#00E5CC]">
-                {m.modelToken}
+                {mToken(i)}
               </span>
-              <h3 className="mt-4 text-xl font-black text-white">
-                {pick(m.modelName, modelEn[i].modelName)}
-              </h3>
-              <p className="mt-2 flex-1 text-sm leading-7 text-white/60">
-                {pick(m.modelDesc, modelEn[i].modelDesc)}
-              </p>
+              <h3 className="mt-4 text-xl font-black text-white">{mName(i)}</h3>
+              <p className="mt-2 flex-1 text-sm leading-7 text-white/60">{mDesc(i)}</p>
               <div className="mt-6 flex flex-wrap items-center gap-x-6 border-t border-white/10 pt-2">
                 <a
                   href={m.url}
@@ -400,31 +326,18 @@ export default function HomePage() {
         <h2 className="text-2xl font-black md:text-3xl">{t("home.latest")}</h2>
 
         <div className="mt-8 grid gap-5 lg:grid-cols-5">
-          {/* featured */}
           <a
             href={`/news/${news[0].slug}/`}
             className="tilt group relative flex min-h-[300px] flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-[#635BFF] via-[#4A3FD8] to-[#2A2380] p-7 hover:shadow-[0_30px_60px_-25px_rgba(99,91,255,0.5)] sm:p-9 lg:col-span-3"
           >
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -end-16 -top-16 h-56 w-56 rounded-full border-[24px] border-white/10"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -bottom-20 -start-10 h-44 w-44 rounded-full bg-white/5 blur-2xl"
-            />
+            <div aria-hidden="true" className="pointer-events-none absolute -end-16 -top-16 h-56 w-56 rounded-full border-[24px] border-white/10" />
+            <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -start-10 h-44 w-44 rounded-full bg-white/5 blur-2xl" />
             <div className="relative flex flex-wrap items-center gap-3">
-              <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-[#4636C9]">
-                {pick(news[0].cat, newsEn[0].cat)}
-              </span>
-              <span className="text-xs font-bold text-white/75">
-                {pick(news[0].date, newsEn[0].date)}
-              </span>
+              <span className="rounded-full bg-white px-3 py-1 text-xs font-black text-[#4636C9]">{nCat(0)}</span>
+              <span className="text-xs font-bold text-white/75">{nDate(0)}</span>
             </div>
             <div className="relative mt-8">
-              <h3 className="text-2xl font-black leading-snug sm:text-3xl">
-                {pick(news[0].title, newsEn[0].title)}
-              </h3>
+              <h3 className="text-2xl font-black leading-snug sm:text-3xl">{nTitle(0)}</h3>
               <span className="mt-6 inline-flex min-h-[44px] items-center gap-2 text-sm font-black text-white">
                 {t("home.readMore")}
                 <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5 rtl:rotate-180 rtl:group-hover:-translate-x-1.5" />
@@ -432,24 +345,19 @@ export default function HomePage() {
             </div>
           </a>
 
-          {/* side column */}
           <div className="flex flex-col gap-5 lg:col-span-2">
-            {[1, 2].map((idx) => (
+            {[1, 2].map((i) => (
               <a
-                key={idx}
-                href={`/news/${news[idx].slug}/`}
+                key={news[i].slug}
+                href={`/news/${news[i].slug}/`}
                 className="tilt group flex-1 rounded-3xl border border-white/10 bg-[#121636] p-6 hover:border-white/25"
               >
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold text-white/70">
-                    {pick(news[idx].cat, newsEn[idx].cat)}
-                  </span>
-                  <span className="text-xs text-white/45">
-                    {pick(news[idx].date, newsEn[idx].date)}
-                  </span>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold text-white/70">{nCat(i)}</span>
+                  <span className="text-xs text-white/45">{nDate(i)}</span>
                 </div>
                 <h3 className="mt-3 line-clamp-2 text-lg font-extrabold leading-relaxed transition-colors group-hover:text-[#00E5CC]">
-                  {pick(news[idx].title, newsEn[idx].title)}
+                  {nTitle(i)}
                 </h3>
                 <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-white/50 transition-colors group-hover:text-[#00E5CC]">
                   {t("home.readMore")}
@@ -475,15 +383,10 @@ export default function HomePage() {
           href="/tutorials/"
           className="tilt group relative flex flex-col gap-7 overflow-hidden rounded-3xl border border-[#00E5CC]/40 bg-[#121636] p-7 hover:border-[#00E5CC]/70 sm:p-10 md:flex-row md:items-center md:justify-between"
         >
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -end-14 -top-20 h-52 w-52 rounded-full bg-[#00E5CC]/10 blur-3xl"
-          />
+          <div aria-hidden="true" className="pointer-events-none absolute -end-14 -top-20 h-52 w-52 rounded-full bg-[#00E5CC]/10 blur-3xl" />
           <div className="relative">
             <h2 className="text-2xl font-black md:text-3xl">{t("home.tutTitle")}</h2>
-            <p className="mt-3 max-w-xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8">
-              {t("home.tutLead")}
-            </p>
+            <p className="mt-3 max-w-xl text-sm leading-7 text-white/60 sm:text-base sm:leading-8">{t("home.tutLead")}</p>
           </div>
           <span className="relative inline-flex min-h-[48px] shrink-0 items-center justify-center gap-2 self-start rounded-full bg-[#00E5CC] px-7 text-sm font-black text-[#080C1E] transition-all group-hover:-translate-y-0.5 md:self-auto">
             {t("home.tutCta")}
@@ -496,10 +399,7 @@ export default function HomePage() {
       <section className="mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20 xl:px-8">
         <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
           <h2 className="text-2xl font-black md:text-3xl">{t("home.shopTitle")}</h2>
-          <a
-            href="/shop/"
-            className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm font-bold text-[#00E5CC]"
-          >
+          <a href="/shop/" className="group inline-flex min-h-[44px] items-center gap-1.5 text-sm font-bold text-[#00E5CC]">
             {t("home.shopLink")}
             <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
           </a>
@@ -519,9 +419,7 @@ export default function HomePage() {
               <span className="absolute end-4 top-4 whitespace-nowrap rounded-full bg-[#E5484D] px-2.5 py-1 text-[11px] font-black text-white">
                 {t("home.shopSoon")}
               </span>
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#080C1E] text-[#00E5CC]">
-                {p.icon}
-              </span>
+              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#080C1E] text-[#00E5CC]">{p.icon}</span>
               <h3 className="mt-4 pe-2 text-lg font-black">{t(p.nameKey)}</h3>
               <ul className="mt-4 flex-1 space-y-2.5">
                 {p.features.map((key) => (
@@ -546,18 +444,10 @@ export default function HomePage() {
       {/* ---------------------------- final call to action --------------------- */}
       <section className="mx-auto w-full max-w-6xl px-4 pb-20 pt-2 sm:px-6 sm:pb-28 xl:px-8">
         <div className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-b from-[#121636] to-[#080C1E] px-6 py-16 text-center sm:px-12 sm:py-20">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-0 h-64 w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#635BFF]/25 blur-[100px]"
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-24 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[#00E5CC]/10 blur-[80px]"
-          />
+          <div aria-hidden="true" className="pointer-events-none absolute left-1/2 top-0 h-64 w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#635BFF]/25 blur-[100px]" />
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-24 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[#00E5CC]/10 blur-[80px]" />
           <h2 className="relative text-3xl font-black md:text-4xl">{t("home.finalTitle")}</h2>
-          <p className="relative mx-auto mt-4 max-w-xl text-sm leading-8 text-white/60 sm:text-base">
-            {t("home.finalLead")}
-          </p>
+          <p className="relative mx-auto mt-4 max-w-xl text-sm leading-8 text-white/60 sm:text-base">{t("home.finalLead")}</p>
           <div className="relative mt-9">
             <a
               href="/free-tokens/"
