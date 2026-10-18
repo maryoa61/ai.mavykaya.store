@@ -8,10 +8,6 @@ export const news = [
   { slug: "gemini-2-flash", title: "گوگل Gemini 2.0 Flash را با سرعت 3 برابری معرفی کرد", cat: "Google", date: "دیروز", img: "✨" },
   { slug: "llama-4-open", title: "متا Llama 4 را متن باز کرد؛ رقابت داغ شد", cat: "Meta", date: "2 روز پیش", img: "🦙" },
 ];
-export const tutorials = [
-  { slug: "how-to-use-deepseek-token", title: "آموزش شروع کار با API مدل DeepSeek", time: "4 دقیقه" },
-  { slug: "claude-api-free", title: "چطور از Claude استفاده کنیم؟", time: "5 دقیقه" },
-];
 export const shop = [
   { name: "ChatGPT Plus", price: "—", features: ["GPT-4o نامحدود", "DALL·E 3", "پشتیبانی آنی"] },
   { name: "Claude Pro", price: "—", features: ["Claude 3.5 Sonnet", "200K Context", "پروژه ها"] },

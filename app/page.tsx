@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { freeModels, news } from "../lib/data";
 import { modelEn, newsEn } from "../lib/content";
 import { useLang } from "../components/LanguageProvider";
+import NotifyButton from "../components/NotifyButton";
 import type { Key } from "../lib/i18n";
 
 /* ------------------------- safe English lookups ------------------------- */
@@ -55,15 +56,6 @@ function InfoIcon({ className = "" }: { className?: string }) {
       <circle cx="10" cy="10" r="7.25" stroke="currentColor" strokeWidth="1.6" />
       <path d="M10 9.2v4.2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
       <circle cx="10" cy="6.5" r="1" fill="currentColor" />
-    </svg>
-  );
-}
-
-function BellIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" className={className}>
-      <path d="M10 3.2a4.6 4.6 0 0 0-4.6 4.6v2.7L4 13.3h12l-1.4-2.8V7.8A4.6 4.6 0 0 0 10 3.2Z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M8.4 15.8a1.7 1.7 0 0 0 3.2 0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   );
 }
@@ -442,13 +434,7 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <button
-                type="button"
-                className="mt-6 inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full border border-[#080C1E]/15 text-sm font-bold transition-colors hover:border-[#080C1E]/40 hover:bg-[#080C1E]/5"
-              >
-                <BellIcon className="h-4 w-4" />
-                {t("home.shopNotify")}
-              </button>
+              <NotifyButton productName={t(p.nameKey)} label={t("home.shopNotify")} className="mt-6 inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full border border-[#080C1E]/15 text-sm font-bold transition-colors hover:border-[#080C1E]/40 hover:bg-[#080C1E]/5" />
             </article>
           ))}
         </div>

@@ -1,4 +1,5 @@
 import { shop } from "../../lib/data";
+import NotifyButton from "../../components/NotifyButton";
 
 export const metadata = { title: "فروشگاه Mavy Store | Mavy AI", description: "کاتالوگ اشتراک ابزارهای هوش مصنوعی" };
 
@@ -17,7 +18,7 @@ export default function Shop() {
             <ul className="text-xs opacity-70 mt-3 space-y-1">
               {p.features.map((f) => (<li key={f}>✓ {f}</li>))}
             </ul>
-            <button className="w-full mt-4 bg-dark text-white py-2 rounded-full text-sm">اطلاع از موجودی</button>
+            <NotifyButton productName={p.name} label="اطلاع از موجودی" className="w-full mt-4 bg-dark text-white py-2 rounded-full text-sm" />
           </div>
         ))}
       </div>
