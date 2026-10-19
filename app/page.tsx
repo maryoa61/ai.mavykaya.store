@@ -359,12 +359,12 @@ export default function HomePage() {
               >
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                   <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold text-white/70">{nCat(i)}</span>
-                  <span className="text-xs text-white/45">{nDate(i)}</span>
+                  <span className="text-xs text-white/70">{nDate(i)}</span>
                 </div>
                 <h3 className="mt-3 line-clamp-2 text-lg font-extrabold leading-relaxed transition-colors group-hover:text-[#00E5CC]">
                   {nTitle(i)}
                 </h3>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-white/50 transition-colors group-hover:text-[#00E5CC]">
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-white/70 transition-colors group-hover:text-[#00E5CC]">
                   {t("home.readMore")}
                   <ArrowIcon className="h-3.5 w-3.5 rtl:rotate-180" />
                 </span>
@@ -421,7 +421,7 @@ export default function HomePage() {
               key={p.nameKey}
               className="tilt relative flex flex-col rounded-2xl bg-white p-6 text-[#080C1E] shadow-xl shadow-black/40 hover:shadow-2xl"
             >
-              <span className="absolute end-4 top-4 whitespace-nowrap rounded-full bg-[#E5484D] px-2.5 py-1 text-[11px] font-black text-white">
+              <span className="absolute end-4 top-4 whitespace-nowrap rounded-full bg-[#C92A2E] px-2.5 py-1 text-[11px] font-black text-white">
                 {t("home.shopSoon")}
               </span>
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#080C1E] text-[#00E5CC]">{p.icon}</span>

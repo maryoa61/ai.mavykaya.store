@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Noto+Sans+Arabic:wght@400;500;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body { font-family: 'Noto Sans Arabic', sans-serif; background: #080C1E; color: white; }
-html[lang='en'] body { font-family: 'Inter', sans-serif; }
+/* Fonts are self-hosted by next/font in app/layout.tsx (no render-blocking request). */
+body { font-family: var(--font-arabic), var(--font-inter), sans-serif; background: #080C1E; color: white; }
+html[lang='en'] body { font-family: var(--font-inter), var(--font-arabic), sans-serif; }
 .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
